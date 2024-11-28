@@ -120,17 +120,6 @@ galleryImages.forEach(img => {
         img.style.transform = 'scale(1)'; // Reset zoom
     });
 });
-// Hover Zoom for Images
-const galleryImages = document.querySelectorAll('.gallery-item img');
-galleryImages.forEach(img => {
-    img.addEventListener('mouseenter', () => {
-        img.style.transform = 'scale(1.1)'; // Slight zoom on hover
-        img.style.transition = 'transform 0.3s ease';
-    });
-    img.addEventListener('mouseleave', () => {
-        img.style.transform = 'scale(1)'; // Reset zoom
-    });
-});
 // Zoom In and Out for Resume
 const resumeImage = document.getElementById('resumeImage');
 
@@ -141,3 +130,4 @@ resumeImage.addEventListener('click', () => {
         resumeImage.classList.add('zoomed'); // Zoom in
     }
 });
+
