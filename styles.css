@@ -1,0 +1,299 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Font */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f5f5f5; /* Light neutral background */
+    color: #333; /* Default text color */
+    line-height: 1.6;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #004080; /* Dark blue */
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure header stays on top of content */
+}
+
+/* Ensure the body starts below the header */
+body {
+    margin-top: 80px; /* Adjust margin to match the header height */
+}
+
+.header-left h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.header-right button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Sidebar Menu */
+#sidebarMenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #00274d; /* Navy blue */
+    color: white;
+    padding: 20px;
+    transform: translateX(100%); /* Hidden by default */
+    transition: transform 0.3s ease; /* Smooth slide-in effect */
+    z-index: 1001;
+}
+
+#sidebarMenu.visible {
+    transform: translateX(0); /* Slide in when visible */
+}
+
+#sidebarMenu ul {
+    list-style: none;
+    padding: 0;
+}
+
+#sidebarMenu ul li {
+    margin: 20px 0;
+}
+
+#sidebarMenu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#sidebarMenu ul li a:hover {
+    color: #ffcc00; /* Yellow on hover */
+}
+
+/* Sections */
+.page {
+    padding: 40px 20px;
+    margin: 20px auto;
+    max-width: 1000px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    transition: background-color 0.3s ease;
+}
+
+/* Section Headings */
+.page h2 {
+    font-size: 2rem;
+    color: #004080;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Home Content Layout: My Image and First Paragraph Side by Side */
+.content {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#myImage {
+    width: 200px; /* Reasonable size */
+    height: auto; /* Maintain aspect ratio */
+    border: 5px solid #004080; /* Blue border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    object-fit: cover; /* Ensure proper scaling */
+}
+
+/* Professional Highlights: Certificates Gallery */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between items */
+    justify-content: center;
+}
+
+.gallery-item {
+    width: 300px; /* Consistent size for certificates */
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden; /* Ensure hover effects stay within bounds */
+}
+
+.gallery-item img {
+    width: 100%; /* Full width */
+    border-radius: 8px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.gallery-item:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+.gallery-item p {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 8px;
+}
+
+/* Contact Form Styling */
+#contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#contactForm label {
+    font-weight: bold;
+    color: #004080;
+}
+
+#contactForm input, #contactForm textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#contactForm input[type="submit"], #contactForm input[type="reset"] {
+    background-color: #004080;
+    color: white;
+    cursor: pointer;
+}
+
+#contactForm input[type="submit"]:hover, #contactForm input[type="reset"]:hover {
+    background-color: #0073e6;
+}
+
+/* Accessibility Buttons */
+.accessibility-buttons {
+    position: fixed;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 999;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #004080;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #0073e6;
+    transform: scale(1.05);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column; /* Stack image and text for smaller screens */
+    }
+
+    #myImage {
+        margin: 0 auto;
+    }
+
+    .gallery-item {
+        width: 150px; /* Smaller size for mobile */
+    }
+
+    .gallery-item img {
+        height: 120px; /* Adjust height */
+    }
+}
+/* Alt Text Overlay */
+.alt-overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    color: white; /* White text for visibility */
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    z-index: 10;
+    display: block; /* Ensure visibility */
+}
+/* Grayscale Mode */
+.grayscale-mode {
+    filter: grayscale(100%); /* Convert all colors to grayscale */
+}
+
+/* Welcome Section */
+.welcome-section {
+    text-align: center;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+
+.welcome-section input {
+    margin: 5px;
+    padding: 5px;
+    font-size: 1rem;
+}
+
+.welcome-section button {
+    padding: 5px 10px;
+    font-size: 1rem;
+    background-color: #004080;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.welcome-section button:hover {
+    background-color: #0073e6;
+}
+
+/* Audio Introduction */
+.audio-intro {
+    text-align: center;
+    margin-top: 15px;
+}
+
+audio {
+    width: 80%;
+    max-width: 500px;
+    
+}
