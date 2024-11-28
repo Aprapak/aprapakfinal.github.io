@@ -3,22 +3,26 @@ const nameInput = document.getElementById('nameInput');
 const submitNameButton = document.getElementById('submitName');
 const welcomeMessage = document.getElementById('welcomeMessage');
 
-submitNameButton.addEventListener('click', () => {
-    const userName = nameInput.value.trim();
-    if (userName) {
-        welcomeMessage.innerHTML = `<p>Welcome, ${userName}! Enjoy exploring my portfolio.</p>`;
-    } else {
-        alert('Please enter your name.');
-    }
-});
+if (submitNameButton && nameInput && welcomeMessage) {
+    submitNameButton.addEventListener('click', () => {
+        const userName = nameInput.value.trim();
+        if (userName) {
+            welcomeMessage.innerHTML = `<p>Welcome, ${userName}! Enjoy exploring my portfolio.</p>`;
+        } else {
+            alert('Please enter your name.');
+        }
+    });
+}
 
 // Toggle Sidebar Menu
 const menuButton = document.getElementById('menuButton');
 const sidebarMenu = document.getElementById('sidebarMenu');
 
-menuButton.addEventListener('click', () => {
-    sidebarMenu.classList.toggle('visible');
-});
+if (menuButton && sidebarMenu) {
+    menuButton.addEventListener('click', () => {
+        sidebarMenu.classList.toggle('visible');
+    });
+}
 
 // Smooth Scrolling for Navigation Links with Offset
 document.querySelectorAll('#sidebarMenu a').forEach(anchor => {
@@ -37,77 +41,81 @@ document.querySelectorAll('#sidebarMenu a').forEach(anchor => {
                 behavior: 'smooth' // Smooth scrolling effect
             });
 
-            // Optionally close the menu after clicking
-            const sidebarMenu = document.getElementById('sidebarMenu');
+            // Close the menu after clicking
             sidebarMenu.classList.remove('visible');
         }
     });
 });
 
-
 // Accessibility: Increase Text Size
 const increaseTextSizeButton = document.getElementById('increaseTextSize');
 let isTextLarge = false;
 
-increaseTextSizeButton.addEventListener('click', () => {
-    document.body.style.fontSize = isTextLarge ? '100%' : '120%';
-    isTextLarge = !isTextLarge;
-});
+if (increaseTextSizeButton) {
+    increaseTextSizeButton.addEventListener('click', () => {
+        document.body.style.fontSize = isTextLarge ? '100%' : '120%';
+        isTextLarge = !isTextLarge;
+    });
+}
 
 // Accessibility: Toggle Grayscale Mode for Colorblind Accessibility
 const colorBlindButton = document.getElementById('colorBlindButton');
 let isGrayscaleMode = false;
 
-colorBlindButton.addEventListener('click', () => {
-    if (!isGrayscaleMode) {
-        document.body.classList.add('grayscale-mode');
-    } else {
-        document.body.classList.remove('grayscale-mode');
-    }
-    isGrayscaleMode = !isGrayscaleMode;
-});
-
+if (colorBlindButton) {
+    colorBlindButton.addEventListener('click', () => {
+        if (!isGrayscaleMode) {
+            document.body.classList.add('grayscale-mode');
+        } else {
+            document.body.classList.remove('grayscale-mode');
+        }
+        isGrayscaleMode = !isGrayscaleMode;
+    });
+}
 
 // Accessibility: Display Alt Text
 const displayAltTextButton = document.getElementById('displayAltText');
 let isAltTextVisible = false;
 
-displayAltTextButton.addEventListener('click', () => {
-    const images = document.querySelectorAll('.gallery-item img, #myImage');
-    images.forEach(img => {
-        if (!isAltTextVisible) {
-            const altText = document.createElement('div');
-            altText.textContent = img.alt;
-            altText.classList.add('alt-overlay');
-            img.parentElement.style.position = 'relative'; // Ensure positioning for overlay
-            img.parentElement.appendChild(altText);
-            img.altElement = altText;
-        } else {
-            img.altElement?.remove(); // Remove the alt text if visible
-        }
+if (displayAltTextButton) {
+    displayAltTextButton.addEventListener('click', () => {
+        const images = document.querySelectorAll('.gallery-item img, #myImage');
+        images.forEach(img => {
+            if (!isAltTextVisible) {
+                const altText = document.createElement('div');
+                altText.textContent = img.alt;
+                altText.classList.add('alt-overlay');
+                img.parentElement.style.position = 'relative'; // Ensure positioning for overlay
+                img.parentElement.appendChild(altText);
+                img.altElement = altText;
+            } else {
+                img.altElement?.remove(); // Remove the alt text if visible
+            }
+        });
+        isAltTextVisible = !isAltTextVisible;
     });
-    isAltTextVisible = !isAltTextVisible;
-});
-
+}
 
 // Change Text Color
 const changeTextColorButton = document.getElementById('changeTextColor');
 let isAccessibleTextColor = false;
 
-changeTextColorButton.addEventListener('click', () => {
-    if (!isAccessibleTextColor) {
-        document.body.style.color = '#4CAF50'; // Green text for better contrast
-        document.querySelectorAll('a').forEach(link => {
-            link.style.color = '#0073e6'; // Blue links
-        });
-    } else {
-        document.body.style.color = '#333'; // Default text color
-        document.querySelectorAll('a').forEach(link => {
-            link.style.color = '#004080'; // Default link color
-        });
-    }
-    isAccessibleTextColor = !isAccessibleTextColor;
-});
+if (changeTextColorButton) {
+    changeTextColorButton.addEventListener('click', () => {
+        if (!isAccessibleTextColor) {
+            document.body.style.color = '#4CAF50'; // Green text for better contrast
+            document.querySelectorAll('a').forEach(link => {
+                link.style.color = '#0073e6'; // Blue links
+            });
+        } else {
+            document.body.style.color = '#333'; // Default text color
+            document.querySelectorAll('a').forEach(link => {
+                link.style.color = '#004080'; // Default link color
+            });
+        }
+        isAccessibleTextColor = !isAccessibleTextColor;
+    });
+}
 
 // Hover Zoom for Images
 const galleryImages = document.querySelectorAll('.gallery-item img');
@@ -120,13 +128,16 @@ galleryImages.forEach(img => {
         img.style.transform = 'scale(1)'; // Reset zoom
     });
 });
+
 // Zoom In and Out for Resume
 const resumeImage = document.getElementById('resumeImage');
 
-resumeImage.addEventListener('click', () => {
-    if (resumeImage.classList.contains('zoomed')) {
-        resumeImage.classList.remove('zoomed'); // Zoom out
-    } else {
-        resumeImage.classList.add('zoomed'); // Zoom in
-    }
-});
+if (resumeImage) {
+    resumeImage.addEventListener('click', () => {
+        if (resumeImage.classList.contains('zoomed')) {
+            resumeImage.classList.remove('zoomed'); // Zoom out
+        } else {
+            resumeImage.classList.add('zoomed'); // Zoom in
+        }
+    });
+}
